@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || mongodb://localhost/express-demo);
+mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
