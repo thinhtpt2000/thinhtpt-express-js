@@ -1,0 +1,32 @@
+html
+	head
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+		link(rel="stylesheet", href="/styles/custom.css")
+	body
+		nav(class="navbar navbar-expand-lg navbar-light bg-light")
+			a(class="navbar-brand", href="/")
+				img(src="/images/logo.png", width="30", height="30", class="d-inline-block align-top")
+				span &nbsp;
+				span Demo Shop
+			button(class="navbar-toggler", type="button", data-toggle="collapse", data-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
+				span(class="navbar-toggler-icon")
+			div(class="collapse navbar-collapse", id="navbarSupportedContent")
+				ul(class="navbar-nav mr-auto")
+					li(class="nav-item active")
+						a(class="nav-link", href="/") Home
+							span(class="sr-only")
+					li(class="nav-item")
+						a(class="nav-link", href="/users") Users
+					li(class="nav-item")
+						a(class="nav-link", href="/products") Products
+					li(class="nav-item")
+						a(class="nav-link", href="/transfer/create") New transfer
+					if user
+						li(class="nav-item")
+								a(class="nav-link", href="/users/" + user.id)= user.name
+		.container
+			block content
+
+		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")

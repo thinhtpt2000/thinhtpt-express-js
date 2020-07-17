@@ -1,0 +1,74 @@
+extends ../layouts/common
+block content
+	h1 Products
+	each product in products
+		.col-3.d-inline-flex.mb-2
+			.card
+				img.card-img-top(src=product.image, alt="Card image cap")
+				.card-body
+					h5.card-title= product.name
+					p.card-text= product.description
+					a.btn.btn-primary(href="/cart/add/" + product.id) Add to cart
+
+	nav
+		ul.pagination.justify-content-center
+			if (maxPage >= 3)
+				if (status === 'start')
+					li.page-item.disabled
+						a.page-link(href="#" + (page-1), tabindex="-1") Previous
+					li.page-item.active
+						a.page-link(href="/products?page=" + page)= page
+					li.page-item
+						a.page-link(href="/products?page=" +  (page+1))= (page+1)
+					li.page-item
+						a.page-link(href="/products?page=" + (page+2))= (page+2)
+					li.page-item
+						a.page-link(href="/products?page=" + (page+1), tabindex="1") Next
+				else if (status === 'end')
+					li.page-item
+						a.page-link(href="/products?page=" + (page-1), tabindex="-1") Previous
+					li.page-item
+						a.page-link(href="/products?page=" + (page-2))= (page-2)
+					li.page-item
+						a.page-link(href="/products?page=" +  (page-1))= (page-1)
+					li.page-item.active
+						a.page-link(href="/products?page=" + page)= page
+					li.page-item.disabled
+						a.page-link(href="#", tabindex="1") Next
+				else
+					li.page-item
+						a.page-link(href="/products?page=" + (page-1), tabindex="-1") Previous
+					li.page-item
+						a.page-link(href="/products?page=" + (page-1))= (page-1)
+					li.page-item.active
+						a.page-link(href="/products?page=" +  page)= page
+					li.page-item
+						a.page-link(href="/products?page=" + (page+1))= (page+1)
+					li.page-item
+						a.page-link(href="/products?page=" + (page+1), tabindex="1") Next
+			else if (maxPage == 2)
+				if (status === 'start')
+					li.page-item.disabled
+						a.page-link(href="#" + (page-1), tabindex="-1") Previous
+					li.page-item.active
+						a.page-link(href="/products?page=" + page)= page
+					li.page-item
+						a.page-link(href="/products?page=" +  (page+1))= (page+1)
+					li.page-item
+						a.page-link(href="/products?page=" + (page+1), tabindex="1") Next
+				else if (status === 'end')
+					li.page-item
+						a.page-link(href="/products?page=" + (page-1), tabindex="-1") Previous
+					li.page-item
+						a.page-link(href="/products?page=" +  (page-1))= (page-1)
+					li.page-item.active
+						a.page-link(href="/products?page=" + page)= page
+					li.page-item.disabled
+						a.page-link(href="#", tabindex="1") Next
+			else if (maxPage == 1)
+				li.page-item.disabled
+					a.page-link(href="/products?page=" + (page-1), tabindex="-1") Previous
+				li.page-item.active
+					a.page-link(href="/products?page=" + page)= page
+				li.page-item.disabled
+					a.page-link(href="#", tabindex="1") Next

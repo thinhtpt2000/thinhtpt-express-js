@@ -1,0 +1,12 @@
+extends ../layouts/common
+block content
+	h1 New transfer
+	form(method='POST')
+		.form-group.mb-2
+			input(type='hidden', name='_csrf', value=csrfToken)
+			label(for='txtAccount') Account
+			input(name='account', type='text', id='txtAccount', class='form-control', value= account ? account : '', placeholder='Enter account')
+		.form-group.mb-2
+			label(for='txtAmount') Amount
+			input(name='amount', type='text', id='txtAmount', class='form-control', placeholder='Enter amount')
+		button.btn.btn-primary(type='submit') Transfer

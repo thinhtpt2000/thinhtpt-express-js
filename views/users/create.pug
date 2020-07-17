@@ -1,0 +1,17 @@
+extends ../layouts/common
+block content
+	h1 Create User
+	if errors
+		each error in errors
+			.alert.alert-danger= error
+	form(action='/users/create', method='POST', enctype='multipart/form-data')
+		.form-group.mb-2
+			label(for='txtName') Name
+			input(name='name', type='text', id='txtName', class='form-control', value= values ? values.name : '', placeholder='Enter name')
+		.form-group.mb-2
+			label(for='txtPhone') Phone
+			input(name='phone', type='text', id='txtPhone', class='form-control', value= values ? values.phone : '', placeholder='Enter phone')
+		.form-group.mb-2.border-0
+			label(for='uldAvatar') Avatar
+			input(name='avatar', type='file', id='uldAvatar', class='form-control-file')
+		button.btn.btn-primary(type='submit') Create
