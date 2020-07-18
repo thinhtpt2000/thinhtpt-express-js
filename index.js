@@ -3,7 +3,7 @@ require('dotenv').config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var csrf = require('csurf');
+// var csrf = require('csurf');
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
